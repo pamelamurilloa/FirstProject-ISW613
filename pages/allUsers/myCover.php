@@ -1,7 +1,7 @@
 <?php
-    include('../../scripts/utils/newsManager.php');
+    include('../../scripts/news/newsManager.php');
 
-    $categorySelected = (isset($_GET['id'])) ? $_GET['id'] : -1;
+    $categorySelected = (isset($_GET['id'])) ? $_GET['id'] : null;
 
     $news = getNewsByCategory($categorySelected);
 ?>
@@ -47,7 +47,6 @@
                 echo '<a href="' . $newsSRC . '">Show More</a>';
                 echo '</div>';
             }
-
         ?>
     </div>
     <footer>

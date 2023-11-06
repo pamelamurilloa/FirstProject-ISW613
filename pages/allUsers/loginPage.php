@@ -27,13 +27,6 @@
         <div class="register-options">
             <p>Dont have an account? <a class="btn" href="registerPage.php">Sign Up Here</a></p>
         </div>
-
-        <?php
-            if ( isset( $_GET["error"] ) ){
-                $error_message = $_GET["error"];
-                echo '<p class="error_message">' . $error_message;
-            }
-        ?>
         
     </div>
     <footer>
