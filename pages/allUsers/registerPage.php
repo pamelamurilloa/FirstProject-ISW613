@@ -66,5 +66,9 @@
       </div>
     </form>
   </div>
+  <footer>
+        <h2>Pamela Murillo Anchia</h2>
+        <h3>Universidad Tecnica Nacional</h3>
+    </footer>
 </body>
 </html>
