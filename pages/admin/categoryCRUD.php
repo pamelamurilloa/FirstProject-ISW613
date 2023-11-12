@@ -1,5 +1,5 @@
 <?php
-    require_once('../scripts/categories/categoryManager.php');
+    require_once('../../scripts/categories/categoryManager.php');
 
     $categorySelected = (isset($_GET['id'])) ? $_GET['id'] : null;
     $categories = getCategories();
