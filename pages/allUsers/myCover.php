@@ -37,14 +37,16 @@
                 $description = $newsItem['description'];
 
                 echo '<div class="news-card">';
-                echo '<p>' . $date . '</p>';
-                echo '<a href="' . $newsSRC . '"><img src="' . $imageSRC . '" alt="news image"></a>';
-                echo '<div class="news-card-subtitle">';
-                echo '<h3>' . $title . '</h3>';
-                echo '<h4>' . $category . '</h4>';
-                echo '</div>';
-                echo '<p>' . $description . '</p>';
-                echo '<a href="' . $newsSRC . '">Show More</a>';
+                    echo '<p>' . $date . '</p>';
+                    echo '<a href="' . $newsSRC . '"><img src="' . $imageSRC . '" alt="news image"></a>';
+
+                    echo '<div class="news-card-subtitle">';
+                        echo '<h3>' . $title . '</h3>';
+                        echo '<h4>' . $category . '</h4>';
+                    echo '</div>';
+                    
+                    echo '<p>' . $description . '</p>';
+                    echo '<a href="' . $newsSRC . '">Show More</a>';
                 echo '</div>';
             }
         ?>
