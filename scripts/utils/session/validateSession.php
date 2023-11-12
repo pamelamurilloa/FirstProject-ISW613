@@ -1,5 +1,7 @@
 <?php
 
+require_once('../dataBase/dbConexion.php');
+
 function confirmLogin (){
     session_start();
     if ( empty($_SESSION['user']) ) {
