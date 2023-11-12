@@ -12,7 +12,7 @@
   <div class="user-form">
     <h1>User Registration</h1>
 
-    <form method="post" action="../signup.php">
+    <form method="post" action="../../scripts/users/addUser.php">
 
       <div class="form-group">
         <label for="first-name">First Name</label>
