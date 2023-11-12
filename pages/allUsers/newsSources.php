@@ -1,9 +1,11 @@
 <?php
     require_once('../../scripts/news/newsManager.php');
+    require_once('../../scripts/utils/session/validateSession.php');
 
     $newsSourceSelected = (isset($_GET['id'])) ? $_GET['id'] : null;
     $newsSources = getSources();
 
+    confirmLogin();
 ?>
 
 <!DOCTYPE html>

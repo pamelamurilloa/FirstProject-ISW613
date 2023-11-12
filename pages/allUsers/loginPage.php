@@ -1,3 +1,9 @@
+<?php
+    require_once('../../scripts/utils/session/validateSession.php');
+
+    confirmLogin();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

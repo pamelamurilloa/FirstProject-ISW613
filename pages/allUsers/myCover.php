@@ -1,9 +1,12 @@
 <?php
-    include('../../scripts/news/newsManager.php');
+    require_once('../../scripts/news/newsManager.php');
+    require_once('../../scripts/utils/session/validateSession.php');
 
     $categorySelected = (isset($_GET['id'])) ? $_GET['id'] : null;
 
     $news = getNewsByCategory($categorySelected);
+
+    confirmLogin();
 ?>
 
 <!DOCTYPE html>
