@@ -11,16 +11,36 @@ function getConexion() {
   return $conexion;
 }
 
-function getUserByUsernamePassword($username, $password) {
-    $conexion = getConexion();
-    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password';";
-    $result = $conexion->query($sql);
-  
-    if ($conexion->connect_errno) {
-      $conexion->close();
-      return false;
-    }
-    $results = $result->fetch_array();
-    $conexion->close();
-    return $results;
+
+function selectFromDB($sql) {
+  $conexion = getConexion();
+
+  $result = $conexion->query($sql);
+
+  // Check if the query was successful
+  if ($result === false) {
+    die("Error in SQL query: " . $conexion->error);
   }
+
+  $results = $result->fetch_array();
+
+  $conexion->close();
+  return $results;
+}
+
+function makeQueryOnly($sql) {
+  $conexion = getConexion();
+
+  $result = $conexion->query($sql);
+  
+  if ($result === false) {
+    echo "Error in SQL query: " . $conexion->error;
+    $conexion->close();
+    return false;
+  }
+  
+  $conexion->close();
+  return true;
+}
+
+
