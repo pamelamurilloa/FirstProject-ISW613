@@ -34,7 +34,7 @@
 
     // Updates a News Source in the database
 
-    function updateSource($source){
+    function editSource($source){
 
         $sourceID = $source['id'];
         $name = $source['name'];
@@ -42,7 +42,7 @@
         $rssURL = $source['rss'];
         $userID = confirmLogin()['id'];
 
-        $sql = "UPDATE news_sources SET name = '$firstName', url = '$lastName', fk_category_id = '$password' WHERE id = $sourceID AND fk_user_id = $userID;";
+        $sql = "UPDATE news_sources SET name = '$name', url = '$rssURL', fk_category_id = '$categoryID' WHERE id = $sourceID AND fk_user_id = $userID;";
 
         return makeQueryOnly($sql);
     }
