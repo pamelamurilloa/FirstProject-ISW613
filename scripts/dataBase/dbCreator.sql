@@ -5,6 +5,14 @@ CREATE DATABASE my_cover;
 -- DATABASE SELECTION
 USE my_cover;
 
+
+-- TABLE DROP
+DROP TABLE IF EXISTS news;
+DROP TABLE IF EXISTS news_sources;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS categories;
+
 -- TABLE CREATION
 CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,7 +38,7 @@ CREATE TABLE users (
 
 CREATE TABLE news_sources (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    url VARCHAR NOT NULL,
+    url VARCHAR(255) NOT NULL,
     name VARCHAR(100) NOT NULL,
     fk_category_id INT,
     fk_user_id INT,
@@ -42,7 +50,7 @@ CREATE TABLE news (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
     short_description VARCHAR(200) NOT NULL,
-    permalink VARCHAR NOT NULL,
+    permalink VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
     fk_news_sources_id INT,
     fk_user_id INT,
