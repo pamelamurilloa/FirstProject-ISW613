@@ -1,19 +1,19 @@
 <?php
 
-require_once('../dataBase/dbConexion.php');
+    require_once("../../dataBase/dbConexion.php");
 
-function confirmLogin () {
-    session_start();
-    if ( empty($_SESSION['user']) ) {
-        header("Location: logout.php");
-        exit();
-    } else {
-        $user = $_SESSION['user'];
+    function confirmLogin () {
+        session_start();
+        if ( empty($_SESSION['user']) ) {
+            header("Location: logout.php");
+            exit();
+        } else {
+            $user = $_SESSION['user'];
+            return $user;
+        }
+    }
+
+    function authenticate($username, $password){
+        $user = getUserByUsernamePassword($username, $password);
         return $user;
     }
-}
-
-function authenticate($username, $password){
-    $user = getUserByUsernamePassword($username, $password);
-    return $user;
-  }

@@ -1,5 +1,5 @@
 <?php
-    require_once('../../scripts/utils/session/validateSession.php');
+  require_once('../../scripts/utils/session/validateSession.php');
 
   confirmLogin();
 ?>
