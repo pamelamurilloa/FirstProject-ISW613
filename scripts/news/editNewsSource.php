@@ -15,7 +15,7 @@
         if ($editSource($source)) {
             header("Location: ../../pages/allUsers/newsSources.php");
         } else {
-            header("Location: ../../pages/allUsers/newsSources.php?error=unable-to-add-source");
+            header("Location: ../../pages/allUsers/newsSources.php?error=unable-to-edit-source");
         }
 
     }
