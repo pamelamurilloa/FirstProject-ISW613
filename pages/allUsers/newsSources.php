@@ -2,10 +2,16 @@
     require_once('../../scripts/news/newsManager.php');
     require_once('../../scripts/utils/session/validateSession.php');
 
-    $newsSourceSelected = (isset($_GET['id'])) ? $_GET['id'] : null;
-    $newsSources = getSources();
+    $newsSourceSelectedID = (isset($_GET['id'])) ? $_GET['id'] : null;
+    $newsSourceSelected = null;
 
-    confirmLogin();
+    if ($newsSourceSelectedID !== null) {
+        $newsSourceSelected = getSourceByID($newsSourceSelectedID);
+    }
+
+    $userID = confirmLogin()['id'];
+
+    $newsSources = getSourcesByUser($userID);
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +31,7 @@
                 <tr>
                     <th>ID</th>
                     <th>News Source Name</th>
-                    <td>url</td>
+                    <td>rss url</td>
                     <td>Category</td>
                 </tr>
             </thead>
@@ -37,7 +43,7 @@
 
                         echo '<td>' . $newsSource['id'] . '</td>';
                         echo '<td>' . $newsSource['name'] . '</td>';
-                        echo '<td>' . $newsSource['url'] . '</td>';
+                        echo '<td>' . $newsSource['rss'] . '</td>';
                         echo '<td>' . $newsSource['category'] . '</td>';
 
                         echo '<td><a href="newsSources.php?id=' . $newsSource['id'] . '">Edit</a> </td>';
@@ -59,14 +65,39 @@
         
         <div class="form-group">
             <label class="label-form" for="name">News Source</label>
-            <input type="text" class="form-control" name="name" placeholder="News Source Name">
+            <input type="text" class="form-control" name="name" placeholder="Enter news source name" required>
         </div>
 
-        <?php echo '<input type="hidden" name="newsSourceID" value="' . $newsSourceSelected . '">'; ?>
+        <div class="form-group">
+            <label class="label-form" for="rss">RSS link</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter RSS link" required>
+        </div>
 
-        <input type="submit" class="btn btn-primary" value="Edit News Source"></input>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" class="form-control" name="category" required>
+            <?php
+                foreach($categories as $id => $category) {
+                    $selected = ($id === $newsSourceSelected['categoryID']) ? 'selected' : '';
+                    echo "<option value=\"$id\" $selected>$category</option>";
+                }
+            ?>
+            </select>
+        </div>
+        
+        <?php 
+        
+            echo '<input type="hidden" name="sourceID" value="' . $newsSourceSelectedID . '">';
 
-        <a href="newsSources.php">Stop Editing</a>
+            if (isset($_GET['id'])) {
+                echo '<input type="submit" class="btn btn-primary" value="Add News Source"></input>';
+            } else {
+
+                echo '<input type="submit" class="btn btn-primary" value="Edit News Source"></input>';
+
+                echo '<a href="newsSources.php">Stop Editing</a>';
+            }
+        ?>
     </div>
 </body>
 </html>
