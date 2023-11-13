@@ -3,7 +3,7 @@
 // Establishes the conexion with the database
 
 function getConexion() {
-  $conexion = new mysqli("localhost:3306", "root", "rootmySQL", "php_crud");
+  $conexion = new mysqli("localhost:3306", "root", "rootmySQL", "my_cover");
   if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
   }
