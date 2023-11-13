@@ -12,10 +12,10 @@
         $user['email'] = $_POST['email'];
         $user['cellphone'] = $_POST['cellphone'];
 
-    if ($saveUser($user)) {
-        header("Location: ../../pages/allUsers/loginPage.php");
-    } else {
-        header("Location: ../../pages/allUsers/registerPage.php?error=unable-to-register");
-    }
+        if ($saveUser($user)) {
+            header("Location: ../../pages/allUsers/loginPage.php");
+        } else {
+            header("Location: ../../pages/allUsers/registerPage.php?error=unable-to-register");
+        }
 
     }
