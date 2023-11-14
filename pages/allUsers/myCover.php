@@ -4,9 +4,10 @@
 
     $categorySelected = (isset($_GET['id'])) ? $_GET['id'] : null;
 
-    $news = getNewsByCategory($categorySelected);
+    $user = confirmLogin();
 
-    confirmLogin();
+    $news = getNewsByUser($categorySelected);
+
 ?>
 
 <!DOCTYPE html>
