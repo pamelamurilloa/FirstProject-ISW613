@@ -50,6 +50,7 @@ CREATE TABLE news (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
     short_description VARCHAR(200) NOT NULL,
+    image VARCHAR(255) NOT NULL,
     permalink VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
     fk_news_sources_id INT,

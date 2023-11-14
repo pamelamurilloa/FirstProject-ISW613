@@ -5,9 +5,11 @@
 
     function getNewsByCategory ($categoryID) {
 
-        $sql = "SELECT title, short_description, permalink, date FROM news WHERE fk_category_id = $categoryID;";
 
-        return selectFromDB($sql);;
+        $userID = confirmLogin()['id'];
+        $sql = "SELECT n.id AS newsID, n.image AS imageSRC, n.title, n.short_description AS description, n.permalink as newsSRC, n.date, c.name as category FROM news AS n JOIN categories AS c ON c.id = n.fk_category_id WHERE fk_category_id = $categoryID AND fk_user_id = $userID;";
+
+        return selectFromDB($sql);
     }
 
     function getSourcesByUser ($userID) {
