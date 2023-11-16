@@ -4,23 +4,23 @@ require_once("../dataBase/dbConexion.php");
 
 // Registers an user in the database
 
-function saveUser($user){
+function saveUser($user) {
 
     $firstName = $user['firstName'];
     $lastName = $user['lastName'];
     $username = $user['userName'];
     $password = $user['password'];
-    $passwordConfirm = $user['passwordConfirm'];
+    // $passwordConfirm = $user['passwordConfirm'];
     $email = $user['email'];
     $cellphone = $user['cellphone'];
 
-    if ($passwordConfirm !== $password) {
-        return 'faulty password';
-    }
+    // if ($passwordConfirm !== $password) {
+    //     return 'faulty password';
+    // }
 
     $password = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO users (firstname, lastname, password, username, email, cellphone) VALUES('$firstName', '$lastName', '$password', '$username', '$email', '$cellphone');";
+    $sql = "INSERT INTO users (firstname, lastname, password, username, email, cellphone, fk_role_id) VALUES('$firstName', '$lastName', '$password', '$username', '$email', '$cellphone', 2);";
 
     return makeQueryOnly($sql);
 }

@@ -34,10 +34,10 @@
         <input id="password" class="form-control" type="password" name="password" required>
       </div>
 
-      <div class="form-group">
-        <label for="passworConfirm">Confirm Password</label>
-        <input id="passworConfirm" class="form-control" type="password" name="passworConfirm" required>
-      </div>
+      <!-- <div class="form-group">
+        <label for="passwordConfirm">Confirm Password</label>
+        <input id="passwordConfirm" class="form-control" type="password" name="passwordConfirm" required>
+      </div> -->
 
       <div class="form-group">
         <label for="email">Email Address</label>

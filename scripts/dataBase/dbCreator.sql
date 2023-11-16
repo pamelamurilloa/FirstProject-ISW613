@@ -29,9 +29,9 @@ CREATE TABLE users (
     firstname VARCHAR(50) NOT NULL,
     lastname VARCHAR(50) NOT NULL,
     username VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
     email VARCHAR(200) NOT NULL,
     cellphone INT NOT NULL,
-    country VARCHAR(5) NOT NULL,
     fk_role_id INT DEFAULT 2,
     FOREIGN KEY (fk_role_id) REFERENCES roles(id)
 );
