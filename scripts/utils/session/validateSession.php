@@ -1,6 +1,8 @@
 <?php
 
-    require_once("../../dataBase/dbConexion.php");
+    require_once('../../users/usersManager.php');
+    require_once('../../dataBase/dbConexion.php');
+
 
     function confirmLogin () {
         session_start();
