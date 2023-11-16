@@ -15,9 +15,9 @@
       $_SESSION['user'] = $user;
 
       if ($user['role'] === 'admin') {
-        header('Location: ../../pages/admin/categoryCRUD.php');
+        header("Location: http://".$_SERVER['HTTP_HOST']."/FinalProject-ISW613/pages/admin/categoryCRUD.php");
       } else {
-        header('Location: ../../allUsers/myCover.php?id=' . $user['id'] . '');
+        header("Location: Location: http://".$_SERVER['HTTP_HOST']."/FinalProject-ISW613/pages/allUsers/myCover.php?id=".$user['id']);
       }
       
     } else {

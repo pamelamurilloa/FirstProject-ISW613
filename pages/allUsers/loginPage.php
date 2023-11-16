@@ -12,7 +12,7 @@
     <div class="user-form">
         <h1>User Login</h1>
 
-        <form action="../utils/session/login.php" method="POST" class="form-inline" role="form">
+        <form action="../../scripts/utils/session/login.php" method="POST" class="form-inline" role="form">
         <div class="form-group">
             <label class="label-form" for="username">Username</label>
             <input type="text" class="form-control" name="username" placeholder="Your username">
