@@ -5,7 +5,7 @@
     function confirmLogin () {
         session_start();
         if ( empty($_SESSION['user']) ) {
-            header("Location: logout.php");
+            header("Location: http://".$_SERVER['HTTP_HOST']."/FinalProject-ISW613/scripts/utils/session/logout.php");
             exit();
         } else {
             $user = $_SESSION['user'];
