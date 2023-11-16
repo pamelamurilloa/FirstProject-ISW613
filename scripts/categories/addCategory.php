@@ -9,7 +9,7 @@
 
         $name = $_POST["name"];
 
-        if ($saveCategory($name)) {
+        if (saveCategory($name)) {
             header("Location: ../../pages/admin/categoryCRUD.php");
         } else {
             header("Location: ../../pages/admin/categoryCRUD.php?error=unable-to-add-category");

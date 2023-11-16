@@ -12,7 +12,7 @@
         $source['rss'] = $_POST['rss'];
         $source['id'] = $_POST['sourceID'];
 
-        if ($saveSource($source)) {
+        if (saveSource($source)) {
             header("Location: ../../pages/allUsers/newsSources.php");
         } else {
             header("Location: ../../pages/allUsers/newsSources.php?error=unable-to-add-source");

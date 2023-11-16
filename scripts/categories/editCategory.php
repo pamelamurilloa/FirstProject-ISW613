@@ -10,7 +10,7 @@
         $category['name'] = $_POST["name"];
         $category['id'] = $_POST['categoryID'];
 
-        if ($editCategory($category)) {
+        if (editCategory($category)) {
             header("Location: ../../pages/admin/categoryCRUD.php");
         } else {
             header("Location: ../../pages/admin/categoryCRUD.php?error=unable-to-edit-source");
