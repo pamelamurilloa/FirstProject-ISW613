@@ -15,11 +15,10 @@
       $_SESSION['user'] = $user;
 
       if ($user['role'] === 'admin') {
-        // header("Location: http://".$_SERVER['HTTP_HOST']."/FinalProject-ISW613/pages/admin/categoryCRUD.php");
         header("Location: ../../../pages/admin/categoryCRUD.php");
 
       } else {
-        header("Location: ../../../pages/allUsers/newsSources.php?id=".$user['id']);
+        header("Location: ../../../pages/allUsers/myCover.php");
       }
       
     } else {
