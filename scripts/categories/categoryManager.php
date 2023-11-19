@@ -1,7 +1,10 @@
 <?php
 
-    require_once('../../dataBase/dbConexion.php');
-    require_once('../utils/session/validateSession.php');
+$root = dirname(dirname(__FILE__));
+
+
+    require_once($root . '\dataBase\dbConexion.php');
+    require_once($root . '\utils\session\validateSession.php');
 
     function getCategories () {
 

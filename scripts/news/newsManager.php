@@ -1,7 +1,10 @@
 <?php
 
-    require_once('../../scripts/dataBase/dbConexion.php');
-    require_once('../utils/session/validateSession.php');
+$root = dirname(dirname(__FILE__));
+
+
+    require_once($root . '\dataBase\dbConexion.php');
+    require_once($root . '\utils\session\validateSession.php');
 
     function getNewsByCategory ($categoryID) {
 
@@ -22,7 +25,7 @@
 
         $sql = "SELECT ns.id, ns.url, ns.name, c.name AS category FROM news_sources AS ns JOIN categories AS c ON c.id = ns.fk_category_id WHERE fk_user_id = $userID;";
 
-        $sources = selectFromDB($sql);
+        $result = selectFromDB($sql);
 
         $sources = array();
         while ($row = $result->fetch_assoc()) {
@@ -32,6 +35,19 @@
         return $sources;
     }
 
+    function getSourceByID ($sourceID) {
+
+        $sql = "SELECT ns.id, ns.url, ns.name, c.name AS category FROM news_sources AS ns JOIN categories AS c ON c.id = ns.fk_category_id WHERE ns.id = $sourceID;";
+
+        $result = selectFromDB($sql);
+
+        $sources = array();
+        while ($row = $result->fetch_assoc()) {
+          $sources[] = $row;
+        }
+
+        return $sources[0];
+    }
 
     // Registers a News Source in the database
 
@@ -42,7 +58,7 @@
         $rssURL = $source['rss'];
         $userID = confirmLogin()['id'];
 
-        $sql = "INSERT INTO news_sources (name, url, fk_category_id, fk_user_id) VALUES('$name', '$rssURL', '$categoryID', '$userID');";
+        $sql = "INSERT INTO news_sources (name, url, fk_category_id, fk_user_id) VALUES('$name', '$rssURL', $categoryID, $userID);";
 
         return makeQueryOnly($sql);
     }
@@ -70,7 +86,7 @@
         $userID = confirmLogin()['id'];
 
         $sql = "DELETE FROM news WHERE fk_news_sources_id = $id AND fk_user_id = $userID";
-        return makeQueryOnly($sql);
+        makeQueryOnly($sql);
         
         $sql = "DELETE FROM news_sources WHERE id = $id AND fk_user_id = $userID";
         return makeQueryOnly($sql);

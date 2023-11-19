@@ -1,9 +1,12 @@
 <?php
     require_once('../../scripts/news/newsManager.php');
+    require_once('../../scripts/categories/categoryManager.php');
     require_once('../../scripts/utils/session/validateSession.php');
 
     $newsSourceSelectedID = (isset($_GET['id'])) ? $_GET['id'] : null;
+
     $newsSourceSelected = null;
+    $categories = getCategories();
 
     if ($newsSourceSelectedID !== null) {
         $newsSourceSelected = getSourceByID($newsSourceSelectedID);
@@ -31,27 +34,30 @@
                 <tr>
                     <th>ID</th>
                     <th>News Source Name</th>
-                    <td>rss url</td>
-                    <td>Category</td>
+                    <th>rss url</th>
+                    <th>Category</th>
                 </tr>
             </thead>
 
             <tbody>
 
-                <?php foreach ($newsSources as $newsSource) :
-                    echo '<tr>';
+                <?php 
+                    if ( !empty($newsSources)) {
+                        foreach ($newsSources as $newsSource) :
+                            echo '<tr>';
 
-                        echo '<td>' . $newsSource['id'] . '</td>';
-                        echo '<td>' . $newsSource['name'] . '</td>';
-                        echo '<td>' . $newsSource['rss'] . '</td>';
-                        echo '<td>' . $newsSource['category'] . '</td>';
+                                echo '<td>' . $newsSource['id'] . '</td>';
+                                echo '<td>' . $newsSource['name'] . '</td>';
+                                echo '<td>' . $newsSource['url'] . '</td>';
+                                echo '<td>' . $newsSource['category'] . '</td>';
 
-                        echo '<td><a href="newsSources.php?id=' . $newsSource['id'] . '">Edit</a> </td>';
-                        echo '<td><a href="../../scripts/news/deleteNewsSource.php?id=' . $newsSource['id'] . '">Delete</a></td>';
-                        
-                    echo '</tr>';
-                endforeach; ?>
-
+                                echo '<td><a href="newsSources.php?id=' . $newsSource['id'] . '">Edit</a> </td>';
+                                echo '<td><a href="../../scripts/news/deleteNewsSource.php?id=' . $newsSource['id'] . '">Delete</a></td>';
+                                
+                            echo '</tr>';
+                        endforeach; 
+                    }
+                ?>
             </tbody>
         </table>
 
@@ -70,16 +76,16 @@
 
         <div class="form-group">
             <label class="label-form" for="rss">RSS link</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter RSS link" required>
+            <input type="text" class="form-control" name="rss" placeholder="Enter RSS link" required>
         </div>
 
         <div class="form-group">
-            <label for="category">Category</label>
-            <select id="category" class="form-control" name="category" required>
+            <label for="categoryID">Category</label>
+            <select id="categoryID" class="form-control" name="categoryID" required>
             <?php
-                foreach($categories as $id => $category) {
-                    $selected = ($id === $newsSourceSelected['categoryID']) ? 'selected' : '';
-                    echo "<option value=\"$id\" $selected>$category</option>";
+                foreach($categories as $category) {
+                    $selected = ($category['id'] === $newsSourceSelected['categoryID']) ? 'selected' : '';
+                    echo "<option value=\"{$category['id']}\" $selected>{$category['name']}</option>";
                 }
             ?>
             </select>
@@ -90,12 +96,11 @@
             echo '<input type="hidden" name="sourceID" value="' . $newsSourceSelectedID . '">';
 
             if (isset($_GET['id'])) {
-                echo '<input type="submit" class="btn btn-primary" value="Add News Source"></input>';
-            } else {
-
                 echo '<input type="submit" class="btn btn-primary" value="Edit News Source"></input>';
-
                 echo '<a href="newsSources.php">Stop Editing</a>';
+                
+            } else {
+                echo '<input type="submit" class="btn btn-primary" value="Add News Source"></input>';
             }
         ?>
     </div>

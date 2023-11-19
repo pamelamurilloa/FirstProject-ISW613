@@ -59,11 +59,18 @@
             <input type="text" class="form-control" name="name" placeholder="Category name">
         </div>
 
-        <?php echo '<input type="hidden" name="categoryID" value="' . $categorySelected . '">'; ?>
+        <?php 
 
-        <input type="submit" class="btn btn-primary" value="Edit Category"></input>
+            echo '<input type="hidden" name="categoryID" value="' . $categorySelected . '">';
 
-        <a href="categoryCRUD.php">Stop Editing</a>
+            if (isset($_GET['id'])) {
+                echo '<input type="submit" class="btn btn-primary" value="Edit Category"></input>';
+                echo '<a href="categoryCRUD.php">Stop Editing</a>';
+            } else {
+                echo '<input type="submit" class="btn btn-primary" value="Add Category"></input>';
+            }
+        ?>
+        
     </div>
 </body>
 </html>

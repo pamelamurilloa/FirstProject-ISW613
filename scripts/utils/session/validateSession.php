@@ -1,7 +1,10 @@
 <?php
 
-    require_once('../../users/usersManager.php');
-    require_once('../../dataBase/dbConexion.php');
+$root = dirname(dirname(__FILE__));
+
+
+    require_once($root . '\..\users\usersManager.php');
+    require_once($root . '\dataBase\dbConexion.php');
 
 
     function confirmLogin () {

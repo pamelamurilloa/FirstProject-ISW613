@@ -1,6 +1,9 @@
 <?php
 
-require_once('../../dataBase/dbConexion.php');
+$root = dirname(dirname(__FILE__));
+
+
+require_once($root . '\dataBase\dbConexion.php');
 
 // Registers an user in the database
 
@@ -54,7 +57,7 @@ function deleteUser($id){
 function getUserByUsernamePassword($username, $password) {
     $passwordEncripted = hash('sha256', $password);
 
-    $sql = "SELECT u.id, u.firstname, u.lastname, u.username, u.password, u.email, u.cellphone, r.name FROM users AS u JOIN roles AS r ON r.id = u.fk_role_id WHERE username = '$username' AND password = '$passwordEncripted';";
+    $sql = "SELECT u.id, u.firstname, u.lastname, u.username, u.password, u.email, u.cellphone, r.name AS role FROM users AS u JOIN roles AS r ON r.id = u.fk_role_id WHERE username = '$username' AND password = '$passwordEncripted';";
     $result = selectFromDB($sql);
     $user = $result->fetch_assoc();
 
