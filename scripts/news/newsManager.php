@@ -1,7 +1,7 @@
 <?php
 
-    require_once("../dataBase/dbConexion.php");
-    require_once('../utils/session/validateSession.php');
+    require_once("../../dataBase/dbConexion.php");
+    require_once('../../utils/session/validateSession.php');
 
     function getNewsByCategory ($categoryID) {
 

@@ -5,7 +5,7 @@
 function getConexion() {
   $conexion = new mysqli("localhost:3306", "root", "", "my_cover");
   if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+    echo "Error de conexión: " . $conexion->connect_error;
   }
 
   return $conexion;
@@ -19,13 +19,12 @@ function selectFromDB($sql) {
 
   // Check if the query was successful
   if ($result === false) {
-    die("Error in SQL query: " . $conexion->error);
+    echo "Error in SQL query: " . $conexion->error;
+    die();
   }
 
-  $results = $result->fetch_array();
-
   $conexion->close();
-  return $results;
+  return $result;
 }
 
 function makeQueryOnly($sql) {

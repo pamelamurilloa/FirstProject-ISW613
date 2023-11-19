@@ -7,7 +7,7 @@
 
         $sql = "SELECT id, name FROM categories";
 
-        return selectFromDB($sql);;
+        return selectFromDB($sql);
     }
 
     // Registers a new Category in the database

@@ -29,17 +29,20 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($categories as $category) :
-                    echo '<tr>';
+                <?php
+                    if ( !empty($categories) ) {
+                        foreach ($categories as $category) :
+                            echo '<tr>';
 
-                        echo '<td>' . $category['id'] . '</td>';
-                        echo '<td>' . $category['name'] . '</td>';
+                                echo '<td>' . $category['id'] . '</td>';
+                                echo '<td>' . $category['name'] . '</td>';
 
-                        echo '<td><a href="categoryCRUD.php?id=' . $category['id'] . '">Edit</a> </td>';
-                        echo '<td><a href="../../scripts/categories/deleteCategory.php?id=' . $category['id'] . '">Delete</a></td>';
-                        
-                    echo '</tr>';
-                endforeach; ?>
+                                echo '<td><a href="categoryCRUD.php?id=' . $category['id'] . '">Edit</a> </td>';
+                                echo '<td><a href="../../scripts/categories/deleteCategory.php?id=' . $category['id'] . '">Delete</a></td>';
+                                
+                            echo '</tr>';
+                        endforeach; 
+                    }?>
             </tbody>
         </table>
 
