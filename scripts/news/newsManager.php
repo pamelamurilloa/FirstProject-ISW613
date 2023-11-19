@@ -6,10 +6,12 @@ $root = dirname(dirname(__FILE__));
     require_once($root . '\dataBase\dbConexion.php');
     require_once($root . '\utils\session\validateSession.php');
 
+    // Selects all news from a certain user and category, ordered by date
+
     function getNewsByCategory ($categoryID) {
 
         $userID = confirmLogin()['id'];
-        $sql = "SELECT n.id AS newsID, n.image AS imageSRC, n.title, n.short_description AS description, n.permalink as newsSRC, n.date, c.name as category FROM news AS n JOIN categories AS c ON c.id = n.fk_category_id WHERE fk_category_id = $categoryID AND fk_user_id = $userID;";
+        $sql = "SELECT n.id AS newsID, n.image AS imageSRC, n.title, n.short_description AS description, n.permalink as newsSRC, n.date, c.name as category FROM news AS n JOIN categories AS c ON c.id = n.fk_category_id ORDER BY n.date ASC WHERE fk_category_id = $categoryID AND fk_user_id = $userID;";
 
         $result = selectFromDB($sql);
 
@@ -20,6 +22,40 @@ $root = dirname(dirname(__FILE__));
 
         return $news;
     }
+
+    // Selects all news from a certain user, ordered by date
+
+    function getNewsByUser($userID) {
+
+        $sql = "SELECT n.id AS newsID, n.image AS imageSRC, n.title, n.short_description AS description, n.permalink as newsSRC, n.date, c.name as category FROM news AS n JOIN categories AS c ON c.id = n.fk_category_id ORDER BY n.date ASC WHERE fk_user_id = $userID;";
+
+        $result = selectFromDB($sql);
+
+        $news = array();
+        while ($row = $result->fetch_assoc()) {
+          $news[] = $row;
+        }
+
+        return $news;
+    }
+
+    // Returns all sources
+
+    function getSources () {
+
+        $sql = "SELECT ns.id, ns.url, ns.name, ns.fk_user_id AS userID, c.name AS category FROM news_sources AS ns JOIN categories AS c ON c.id = ns.fk_category_id;";
+
+        $result = selectFromDB($sql);
+
+        $sources = array();
+        while ($row = $result->fetch_assoc()) {
+          $sources[] = $row;
+        }
+
+        return $sources;
+    }
+
+    // Returns the information from a source by the userId related to it
 
     function getSourcesByUser ($userID) {
 
@@ -34,6 +70,8 @@ $root = dirname(dirname(__FILE__));
 
         return $sources;
     }
+
+    // Returns the information from a source by its id
 
     function getSourceByID ($sourceID) {
 
@@ -89,5 +127,13 @@ $root = dirname(dirname(__FILE__));
         makeQueryOnly($sql);
         
         $sql = "DELETE FROM news_sources WHERE id = $id AND fk_user_id = $userID";
+        return makeQueryOnly($sql);
+    }
+
+    // Deletes all news from the database
+
+    function cleanseNewsTable(){
+        
+        $sql = "DELETE FROM news;";
         return makeQueryOnly($sql);
     }
