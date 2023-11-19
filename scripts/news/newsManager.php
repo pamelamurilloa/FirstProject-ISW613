@@ -43,7 +43,7 @@ $root = dirname(dirname(__FILE__));
 
     function getSources () {
 
-        $sql = "SELECT ns.id, ns.url, ns.name, ns.fk_user_id AS userID, c.name AS category FROM news_sources AS ns JOIN categories AS c ON c.id = ns.fk_category_id;";
+        $sql = "SELECT ns.id, ns.url, ns.name, ns.fk_user_id AS userID, ns.fk_category_id AS categoryID, c.name AS category FROM news_sources AS ns JOIN categories AS c ON c.id = ns.fk_category_id;";
 
         $result = selectFromDB($sql);
 
@@ -85,6 +85,23 @@ $root = dirname(dirname(__FILE__));
         }
 
         return $sources[0];
+    }
+
+    // Registers News in the database
+
+    function saveNews($news) {
+        $title = $news['title'];
+        $shortDescription = $news['description'];
+        $image = $news['image'];
+        $permalink = $news['link'];
+        $date = $news['date'];
+        $sourceID = $news['sourceID'];
+        $userID = $news['userID'];
+        $categoryID = $news['categoryID'];
+
+        $sql = "INSERT INTO news (title, short_description, image, permalink, date, fk_news_sources_id, fk_user_id, fk_category_id) VALUES ('$title','$shortDescription','$image','$permalink','$date',$sourceID',$userID,$categoryID);";
+
+        return makeQueryOnly($sql);
     }
 
     // Registers a News Source in the database
