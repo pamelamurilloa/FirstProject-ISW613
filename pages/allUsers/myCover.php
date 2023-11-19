@@ -6,8 +6,10 @@
     $categorySelected = (isset($_GET['id'])) ? $_GET['id'] : null;
 
     $user = confirmLogin();
+    $categories = getCategories();
 
-    $news = getNewsByUser($categorySelected);
+    $news = getNewsByUser($user['id']);
+    if ($categorySelected !== null) { $news = getNewsByCategory($categorySelected); }
 
 ?>
 
@@ -25,9 +27,12 @@
     <div class="container">
         <h1>Your Unique News Cover</h1>
         <div class="button-list category-list">
-            <?php foreach ($buttonData as $categoryName => $categoryID):
-                echo "<a class='btn btn-category' href=\"myCover.php?id=$categoryID\" >\"$categoryName\"</a>";
-            endforeach;
+            <?php
+                if ( !empty($categories) ) {
+                    foreach ($categories as $category) :
+                        echo '<a class="btn btn-category" href="myCover.php?id=' . $category['id'] . '">'.$category['name'].'</a>';
+                    endforeach;
+                }
             ?>
         </div>
 
@@ -46,7 +51,7 @@
                     echo '<a href="' . $newsSRC . '"><img src="' . $imageSRC . '" alt="news image"></a>';
 
                     echo '<div class="news-card-subtitle">';
-                        echo '<h3>' . $title . '</h3>';
+                        echo '<a href="' . $newsSRC . '"><h3>' . $title . '</h3></a>';
                         echo '<h4>' . $category . '</h4>';
                     echo '</div>';
                     
