@@ -1,13 +1,20 @@
 <?php
 
-    require_once("../dataBase/dbConexion.php");
+    require_once('../../dataBase/dbConexion.php');
     require_once('../utils/session/validateSession.php');
 
     function getCategories () {
 
         $sql = "SELECT id, name FROM categories";
 
-        return selectFromDB($sql);
+        $result = selectFromDB($sql);
+
+        $categories = array();
+        while ($row = $result->fetch_assoc()) {
+          $categories[] = $row;
+        }
+
+        return $categories;
     }
 
     // Registers a new Category in the database

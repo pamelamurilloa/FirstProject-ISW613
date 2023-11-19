@@ -1,4 +1,5 @@
 <?php
+    require_once('../../scripts/categories/categoryManager.php');
     require_once('../../scripts/news/newsManager.php');
     require_once('../../scripts/utils/session/validateSession.php');
 

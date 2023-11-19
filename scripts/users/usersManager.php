@@ -64,5 +64,8 @@ function getUserByUsernamePassword($username, $password) {
 
 function getUserByID($id) {
     $sql = "SELECT * FROM users WHERE id = '$id';";
-    return selectFromDB($sql);
+    $result = selectFromDB($sql);
+    $user = $result->fetch_assoc();
+
+    return $user;
 }

@@ -19,7 +19,7 @@
         header("Location: ../../../pages/admin/categoryCRUD.php");
 
       } else {
-        header("Location: ../../../pages/allUsers/myCover.php?id=".$user['id']);
+        header("Location: ../../../pages/allUsers/newsSources.php?id=".$user['id']);
       }
       
     } else {
