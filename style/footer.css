@@ -1,0 +1,34 @@
+:root {
+    --color-sass--primary: #061a40;
+    --color-sass--secondary: #006daa;
+    --color-sass--terciary: #e4f3ef;
+    --color-sass--quaternary: #e0c890;
+    --color-sass--background: #FAFAFA;
+    --color-sass--general: #FAFAFA;
+    --color-sass--specific: #161616; }
+  
+  .footer-content {
+    background-color: var(--color-sass--secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8%;
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+}
+  
+
+@media screen and (max-width: 315px) {
+    .footer-content {
+        padding: 4%;
+    }
+}
+  
+@media screen and (min-width: 1024px) {
+
+    .footer-content {
+        padding: 3%;
+    }
+}

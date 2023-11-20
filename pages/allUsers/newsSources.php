@@ -22,11 +22,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../style/all.css">
+    <link rel="stylesheet" href="../../style/header.css">
+    <link rel="stylesheet" href="../../style/footer.css">
+
     <title>News Sources</title>
 </head>
 <body>
+    <header id="header-container-index" class="sticky">
+        <nav id="main-menu">
+            <ul class="links">
+                <li><a href="myCover.php">Home</a></li>
+                <li><a class="active" href="newsSources.php">News Sources</a></li>
+                <li><a class="active" href="../../scripts/utils/session/logout.php">Logout</a></li>
+            </ul>
+        </nav>
 
-    <div class="CRUD">
+        <nav class="nav-container">
+            <div class="nav-bar">
+                <input type="checkbox" id="check">
+                <span class="menu">
+                    <a href="myCover.php">Home</a>
+                    <a class="active" href="newsSources.php">News Sources</a>
+                    <a href="../../scripts/utils/session/logout.php">Logout</a>
+                    <label for="check" class="close-menu">&#10005;</label>
+                </span>
+                <label for="check" class="open-menu">&#9776;</label>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-content">
 
         <table class="table">
 
@@ -104,5 +131,10 @@
             }
         ?>
     </div>
+
+    <footer class="footer-content">
+        <h2>Pamela Murillo Anchia</h2>
+        <h3>Universidad Tecnica Nacional</h3>
+    </footer>
 </body>
 </html>

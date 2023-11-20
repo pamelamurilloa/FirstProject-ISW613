@@ -1,0 +1,57 @@
+:root {
+    --color-sass--primary: #061a40;
+    --color-sass--secondary: #006daa;
+    --color-sass--terciary: #e4f3ef;
+    --color-sass--quaternary: #e0c890;
+    --color-sass--background: #FAFAFA;
+    --color-sass--general: #FAFAFA;
+    --color-sass--specific: #161616; }
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    box-sizing: border-box;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+li {
+    list-style-type: none;
+}
+  
+html {
+height: 100%;
+scroll-behavior: smooth; }
+
+body, footer, header {
+transition: 700ms linear; }
+
+body {
+    background-color: var(--color-sass--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    position: relative; 
+}
+
+.main-content {
+    margin-bottom: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+@media screen and (max-width: 315px) {
+    * {
+        font-size: 0.8rem; 
+    } 
+}
+
+@media screen and (min-width: 768px) {
+
+    .main-content {
+      margin-bottom: 28%; } 
+    }

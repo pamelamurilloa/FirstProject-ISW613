@@ -9,7 +9,7 @@
     <header>
         <h1>My news Cover</h1>
     </header>
-    <div class="user-form">
+    <div class="main-content">
         <h1>User Login</h1>
 
         <form action="../../scripts/utils/session/login.php" method="POST" class="form-inline" role="form">
@@ -29,7 +29,7 @@
         </div>
         
     </div>
-    <footer>
+    <footer class="footer-content">
         <h2>Pamela Murillo Anchia</h2>
         <h3>Universidad Tecnica Nacional</h3>
     </footer>
