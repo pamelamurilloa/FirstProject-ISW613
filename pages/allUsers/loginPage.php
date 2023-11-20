@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../../style/all.css">
-    <link rel="stylesheet" href="../../style/header.css">
-    <link rel="stylesheet" href="../../style/footer.css">
-    <link rel="stylesheet" href="../../style/body.css">
+    <link rel="stylesheet" href="../../style/all.css" type="text/css">
+    <link rel="stylesheet" href="../../style/header.css" type="text/css">
+    <link rel="stylesheet" href="../../style/footer.css" type="text/css">
+    <link rel="stylesheet" href="../../style/body.css" type="text/css">
 
     <title>Login</title>
 </head>
@@ -21,7 +21,7 @@
         </nav>
     </header>
 
-    <div class="main-content">
+    <div class="main-content" id="login">
         <h2>User Login</h2>
 
         <form action="../../scripts/utils/session/login.php" method="POST" class="form-inline" role="form">

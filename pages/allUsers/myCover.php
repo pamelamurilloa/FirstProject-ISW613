@@ -34,15 +34,17 @@
         <nav id="main-menu"  role="navigation" class="navbar">
             <h1><a class="navbar-brand" href="myCover.php">My Cover</a></h1>
             <ul class="links">
-                <li class="nav-item"><a class="nav-link" href="myCover.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="newsSources.php">News Sources</a></li>
+                <li class="nav-item"><a class="nav-link active" href="myCover.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="newsSources.php">News Sources</a></li>
                 <li class="nav-item"><a class="nav-link" href="../../scripts/utils/session/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="main-content">
-        <h1>Your Unique News Cover</h1>
+        <h2>Your Unique News Cover</h2>
+        
+        <h3>Categories</h3>
         <div class="button-list category-list">
             <?php
                 if ( !empty($categories) ) {
@@ -54,6 +56,8 @@
         </div>
 
         <?php
+            echo '<div class="card-columns">';
+
             foreach ($news as $newsItem) {
                 $date = $newsItem['date'];
                 $newsID = $newsItem['newsID'];
@@ -63,24 +67,29 @@
                 $category = $newsItem['category'];
                 $description = $newsItem['description'];
 
-                echo '<div class="news-card">';
-                    echo '<p>' . $date . '</p>';
-                    echo '<a href="' . $newsSRC . '"><img src="' . $imageSRC . '" alt="news image"></a>';
+                echo '<div class="card text-center border-dark mb-3">';
+                
+                    echo '<div class="card-header">';
+                        echo '<p class="card-text">' . $date . '</p>';
+                        echo '<a href="' . $newsSRC . '"><img class="card-img-top" src="' . $imageSRC . '" alt="news image"></a>';
+                    echo '</div>';
 
-                    echo '<div class="news-card-subtitle">';
-                        echo '<a href="' . $newsSRC . '"><h3>' . $title . '</h3></a>';
-                        echo '<h4>' . $category . '</h4>';
+                    echo '<div class="card-body">';
+                        echo '<a class="card-title" href="' . $newsSRC . '">' . $title . '</a>';
+                        echo '<p  class="card-text">' . $category . '</p>';
                     echo '</div>';
                     
-                    echo '<p>' . $description . '</p>';
-                    echo '<a href="' . $newsSRC . '">Show More</a>';
+                    echo '<p class="card-text" >' . $description . '</p>';
+                    echo '<a class="card-link" href="' . $newsSRC . '">Show More</a>';
                 echo '</div>';
             }
+
+            echo '</div>';
         ?>
     </div>
     <footer class="footer-content">
-        <h2>Pamela Murillo Anchia</h2>
-        <h3>Universidad Tecnica Nacional</h3>
+        <h3>Pamela Murillo Anchia</h3>
+        <h4>Universidad Tecnica Nacional</h4>
     </footer>
 </body>
 </html>

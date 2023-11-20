@@ -25,7 +25,7 @@
           </ul>
       </nav>
   </header>
-  
+
   <div class="main-content">
     <h1>User Registration</h1>
 
@@ -74,8 +74,8 @@
   </div>
 
   <footer class="footer-content">
-        <h2>Pamela Murillo Anchia</h2>
-        <h3>Universidad Tecnica Nacional</h3>
+        <h3>Pamela Murillo Anchia</h3>
+        <h4>Universidad Tecnica Nacional</h4>
     </footer>
 </body>
 </html>

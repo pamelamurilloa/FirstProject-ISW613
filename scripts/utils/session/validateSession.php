@@ -8,7 +8,12 @@ $root = dirname(dirname(__FILE__));
 
 
     function confirmLogin () {
-        session_start();
+
+        if (session_status() == PHP_SESSION_NONE) {
+            // Session is not active, start the session
+            session_start();
+        }
+        
         if ( empty($_SESSION['user']) ) {
             header("Location: http://".$_SERVER['HTTP_HOST']."/FinalProject-ISW613/scripts/utils/session/logout.php");
             exit();

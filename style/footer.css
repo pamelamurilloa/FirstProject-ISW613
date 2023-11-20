@@ -17,7 +17,12 @@
     bottom: 0;
     height: 100px;
     width: 100%; 
-    font-size: 0.5rem;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.footer-content h3, .footer-content h4 {
+    font-size: inherit;
 }
   
 
