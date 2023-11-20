@@ -19,19 +19,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" href="../../style/all.css">
     <link rel="stylesheet" href="../../style/header.css">
     <link rel="stylesheet" href="../../style/footer.css">
+    <link rel="stylesheet" href="../../style/body.css">
 
     <title>My Cover</title>
 </head>
 <body>
     <header id="header-container-index" class="sticky">
-        <nav id="main-menu">
+        <nav id="main-menu"  role="navigation" class="navbar">
+            <h1><a class="navbar-brand" href="myCover.php">My Cover</a></h1>
             <ul class="links">
-                <li><a href="myCover.php">Home</a></li>
-                <li><a class="active" href="newsSources.php">News Sources</a></li>
-                <li><a class="active" href="../../scripts/utils/session/logout.php">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="myCover.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="newsSources.php">News Sources</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../scripts/utils/session/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>

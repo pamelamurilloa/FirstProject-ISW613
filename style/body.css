@@ -1,0 +1,30 @@
+:root {
+    --color-sass--primary: #3d405b;
+    --color-sass--secondary: #e07a5f;
+    --color-sass--terciary: #ffd166;
+    --color-sass--background: #f8f7f3;
+    --color-sass--general: #FAFAFA;
+    --color-sass--specific: #161616; }
+
+.form-inline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    margin-left: 2%;
+}
+
+.form-inline .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 70px;
+    margin-bottom: 1%;
+}
+
+
+  
+@media screen and (min-width: 768px) {
+
+}

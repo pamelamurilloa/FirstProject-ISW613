@@ -1,34 +1,30 @@
 :root {
-    --color-sass--primary: #061a40;
-    --color-sass--secondary: #006daa;
-    --color-sass--terciary: #e4f3ef;
-    --color-sass--quaternary: #e0c890;
-    --color-sass--background: #FAFAFA;
+    --color-sass--primary: #3d405b;
+    --color-sass--secondary: #e07a5f;
+    --color-sass--terciary: #ffd166;
+    --color-sass--background: #f8f7f3;
     --color-sass--general: #FAFAFA;
     --color-sass--specific: #161616; }
-  
-  .footer-content {
+
+.footer-content {
     background-color: var(--color-sass--secondary);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    padding: 8%;
+    padding: 4%;
     position: absolute;
     bottom: 0;
+    height: 100px;
     width: 100%; 
+    font-size: 0.5rem;
 }
   
 
-@media screen and (max-width: 315px) {
-    .footer-content {
-        padding: 4%;
-    }
+@media screen and (min-width: 320px) {
+
 }
   
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
 
-    .footer-content {
-        padding: 3%;
-    }
 }
