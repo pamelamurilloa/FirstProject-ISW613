@@ -3,7 +3,7 @@
 $root = dirname(dirname(__FILE__));
 
     require_once($root . '\dataBase\dbConexion.php');
-    require_once($root . '\utils\session\validateSession.php');
+    require_once($root . '\news\newsManager.php');
 
 $newsSources = getSources();
 cleanseNewsTable();
@@ -12,52 +12,52 @@ cleanseNewsTable();
 
 foreach ($newsSources as $sources) :
     $url = $sources['url'];
-    echo '<tr>';
+    $xml = simplexml_load_file($url); // loads the file into a SimpleXMLElement object
 
-        echo '<td>' . $category['id'] . '</td>';
-        echo '<td>' . $category['name'] . '</td>';
+    // Iterate through each item
+    foreach ($xml->channel->item as $item) {
 
-    echo '</tr>';
+        // DATE FORMATING ZONE
+
+        $dateString = $item->pubDate;
+        $dateTime = new DateTime($dateString);
+        $newDateTime = $dateTime->format('Y-m-d H:i:s');
+
+        // ENDS DATE FORMATING ZONE
+        //
+        // BEGINS DESCRIPTION FORMATING ZONE
+
+        $parts = explode('</p>', $item->description[0], 2); // Obtains an array with the img tag in parts[0] and the text in parts[1]
+
+        // Separate the img tag and the text
+        $image = $parts[0];
+        $text = $parts[1];
+
+        // Establishes a pattern to obtain src only of the img
+        $pattern = '/<img[^>]+src=["\']([^"\']+)["\']/';
+        preg_match($pattern, $image, $matches); // Searches for the pattern in the img and saves them in $matches
+
+        // $matches[1] will contain the src
+        $src = isset($matches[1]) ? $matches[1] : '';
+
+        // ENDS DESCRIPTION FORMATING ZONE
+
+
+        $news['title'] = $item->title;
+        $news['description'] = $text;
+        $news['image'] = $src;
+        $news['link'] = $item->link;
+        $news['date'] = $newDateTime;
+        $news['sourceID'] = $sources['id'];
+        $news['userID'] = $sources['userID'];
+        $news['categoryID'] = $sources['categoryID'];
+
+        // echo "Title: " . $news['title'] . ", description: " . $news['description'] . ", image: " . $news['image'] . ", link: " . $news['link'] . ", date: " . $news['date'] . ", sourceID: " . $news['sourceID'] . ", userID: " . $news['userID'] . ", categoryID: " . $news['categoryID'];
+        // echo "<br>";
+        // echo "<br>";
+
+        saveNews($news);
+
+    }
+
 endforeach; 
-
-$url = 'https://feeds.feedburner.com/crhoy/wSjk';
-// Load the XML file into a SimpleXMLElement object
-$xml = simplexml_load_file($url);
-
-// Iterate through each item
-foreach ($xml->channel->item as $item) {
-    // Print the information for each item
-    echo "Title: " . $item->title . "<br>";
-    echo "Link: " . $item->link . "<br>";
-
-    $dateString = $item->pubDate;
-
-    // Create a DateTime object from the original date string
-    $dateTime = new DateTime($dateString);
-
-    // Format the date as MySQL datetime string
-    $newDateTime = $dateTime->format('Y-m-d H:i:s');
-
-
-    echo "Date: " . $newDateTime . "<br>";
-
-    $parts = explode('</p>', $item->description[0], 2);
-
-    // Separate the image and text into different variables
-    $image = $parts[0] ;
-    $text = $parts[1];
-
-    $pattern = '/<img[^>]+src=["\']([^"\']+)["\']/';
-    preg_match($pattern, $image, $matches);
-
-    // $matches[1] will contain the src attribute value
-    $src = isset($matches[1]) ? $matches[1] : '';
-
-    echo "image: " . $src . "<br>";
-    echo "text: " . $text . "<br>";
-
-    // echo "Description: " . ($item->description)[0] . "<br>";
-
-    // Add more properties as needed
-    echo "<br>";
-}

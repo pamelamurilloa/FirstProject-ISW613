@@ -41,7 +41,7 @@ $root = dirname(dirname(__FILE__));
 
     // Returns all sources
 
-    function getSources () {
+    function getSources() {
 
         $sql = "SELECT ns.id, ns.url, ns.name, ns.fk_user_id AS userID, ns.fk_category_id AS categoryID, c.name AS category FROM news_sources AS ns JOIN categories AS c ON c.id = ns.fk_category_id;";
 
@@ -99,7 +99,7 @@ $root = dirname(dirname(__FILE__));
         $userID = $news['userID'];
         $categoryID = $news['categoryID'];
 
-        $sql = "INSERT INTO news (title, short_description, image, permalink, date, fk_news_sources_id, fk_user_id, fk_category_id) VALUES ('$title','$shortDescription','$image','$permalink','$date',$sourceID',$userID,$categoryID);";
+        $sql = "INSERT INTO news (title, short_description, image, permalink, date, fk_news_sources_id, fk_user_id, fk_category_id) VALUES ('$title','$shortDescription','$image','$permalink','$date',$sourceID,$userID,$categoryID);";
 
         return makeQueryOnly($sql);
     }
