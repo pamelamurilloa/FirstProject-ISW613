@@ -27,7 +27,7 @@
   </header>
 
   <div class="main-content">
-    <h1>User Registration</h1>
+    <h2>User Registration</h2>
 
     <form method="post" action="../../scripts/users/addUser.php">
 

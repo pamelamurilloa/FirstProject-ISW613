@@ -8,7 +8,7 @@
 
     $user = authenticate($username, $password);
 
-    if( count($user) > 0 ) {
+    if( isset($user) ) {
 
       // Introduces the user with username and password into the active session
       session_start();

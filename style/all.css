@@ -44,10 +44,26 @@ h1 {
 .btn-primary {
     background-color: var(--color-sass--secondary);
     border: none;
+    margin-bottom: 2%;
+    margin-right: 2%;
 }
 
 .btn-primary:hover {
     background-color: var(--color-sass--primary);
+}
+
+.btn-warning {
+    background-color: var(--color-sass--terciary);
+    border: none;
+    margin-bottom: 2%;
+}
+
+.btn-warning:hover {
+    background-color: var(--color-sass--primary);
+}
+
+td {
+    max-width: 50%;
 }
 
 
@@ -63,7 +79,7 @@ h1 {
 
 @media screen and (min-width: 768px) {
     * {
-        font-size: 1.2rem; 
+        font-size: 1rem; 
     } 
 
     body {

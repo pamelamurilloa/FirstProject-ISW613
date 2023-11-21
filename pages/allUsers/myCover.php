@@ -49,7 +49,7 @@
             <?php
                 if ( !empty($categories) ) {
                     foreach ($categories as $category) :
-                        echo '<a class="btn btn-category" href="myCover.php?id=' . $category['id'] . '">'.$category['name'].'</a>';
+                        echo '<a class="btn btn-primary" href="myCover.php?id=' . $category['id'] . '">'.$category['name'].'</a>';
                     endforeach;
                 }
             ?>
