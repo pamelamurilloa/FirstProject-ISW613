@@ -18,18 +18,12 @@
   <header id="header-container-index" class="sticky">
       <nav id="main-menu"  role="navigation" class="navbar">
           <h1><a class="navbar-brand" href="myCover.php">My Cover</a></h1>
-          <ul class="links">
-              <li class="nav-item"><a class="nav-link" href="myCover.php">Home</a></li>
-              <li class="nav-item"><a class="nav-link active" href="newsSources.php">News Sources</a></li>
-              <li class="nav-item"><a class="nav-link" href="../../scripts/utils/session/logout.php">Logout</a></li>
-          </ul>
-      </nav>
   </header>
 
   <div class="main-content">
     <h2>User Registration</h2>
 
-    <form method="post" action="../../scripts/users/addUser.php">
+    <form method="post" action="../../scripts/users/addUser.php" class="form-inline" role="form">
 
       <div class="form-group">
         <label for="first-name">First Name</label>
@@ -50,11 +44,6 @@
         <label for="password">Password</label>
         <input id="password" class="form-control" type="password" name="password" required>
       </div>
-
-      <!-- <div class="form-group">
-        <label for="passwordConfirm">Confirm Password</label>
-        <input id="passwordConfirm" class="form-control" type="password" name="passwordConfirm" required>
-      </div> -->
 
       <div class="form-group">
         <label for="email">Email Address</label>
