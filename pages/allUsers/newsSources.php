@@ -90,12 +90,12 @@
         
         <div class="form-group">
             <label class="label-form" for="name">News Source</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter news source name" required>
+            <input type="text" class="form-control" name="name" placeholder="Enter news source name" <?php if($newsSourceSelectedID !== null) { echo " value='".$newsSourceSelected['name'] ."' ";} ?> required>
         </div>
 
         <div class="form-group">
             <label class="label-form" for="rss">RSS link</label>
-            <input type="text" class="form-control" name="rss" placeholder="Enter RSS link" required>
+            <input type="text" class="form-control" name="rss" placeholder="Enter RSS link" <?php if($newsSourceSelectedID !== null) { echo " value='".$newsSourceSelected['url'] ."' ";} ?> required>
         </div>
 
         <div class="form-group">
@@ -116,7 +116,7 @@
 
             if (isset($_GET['id'])) {
                 echo '<input type="submit" class="btn btn-primary" value="Edit News Source"></input>';
-                echo '<a href="newsSources.php">Stop Editing</a>';
+                echo '<a class="btn btn-warning" href="newsSources.php">Stop Editing</a>';
                 
             } else {
                 echo '<input type="submit" class="btn btn-primary" value="Add News Source"></input>';

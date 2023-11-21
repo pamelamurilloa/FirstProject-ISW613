@@ -20,6 +20,19 @@ $root = dirname(dirname(__FILE__));
         return $categories;
     }
 
+    function getCategoryByID($categoryID) {
+        $sql = "SELECT name FROM categories WHERE id = $categoryID;";
+
+        $result = selectFromDB($sql);
+
+        $categories = array();
+        while ($row = $result->fetch_assoc()) {
+          $categories[] = $row;
+        }
+
+        return $categories[0];
+    }
+
     // Registers a new Category in the database
 
     function saveCategory($name) {

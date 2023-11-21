@@ -2,8 +2,14 @@
     require_once('../../scripts/categories/categoryManager.php');
     require_once('../../scripts/utils/session/validateSession.php');
 
-    $categorySelected = (isset($_GET['id'])) ? $_GET['id'] : null;
+    $categorySelectedID = (isset($_GET['id'])) ? $_GET['id'] : null;
+
+    $categorySelected = null;
     $categories = getCategories();
+
+    if ($categorySelectedID !== null) {
+        $categorySelected = getCategoryByID($categorySelectedID);
+    }
 
     confirmLogin();
 
@@ -76,12 +82,12 @@
         
         <div class="form-group">
             <label class="label-form" for="name">Category</label>
-            <input type="text" class="form-control" name="name" placeholder="Category name">
+            <input type="text" class="form-control" name="name" placeholder="Category name" <?php if($categorySelectedID !== null) { echo " value='".$categorySelected['name'] ."' ";} ?> required>
         </div>
 
         <?php 
 
-            echo '<input type="hidden" name="categoryID" value="' . $categorySelected . '">';
+            echo '<input type="hidden" name="categoryID" value="' . $categorySelectedID . '">';
 
             if (isset($_GET['id'])) {
                 echo '<input type="submit" class="btn btn-primary" value="Edit Category"></input>';
