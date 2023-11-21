@@ -46,6 +46,7 @@
     </header>
 
     <div class="main-content">
+        <h2>News Administration</h2>
 
         <table class="table">
 
