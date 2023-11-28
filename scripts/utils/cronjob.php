@@ -12,7 +12,6 @@ cleanseNewsTable();
 
 foreach ($newsSources as $sources) :
     $url = $sources['url'];
-    try { 
     $xml = simplexml_load_file($url); // loads the file into a SimpleXMLElement object
 
     // Iterate through each item
@@ -58,10 +57,6 @@ foreach ($newsSources as $sources) :
         // echo "<br>";
 
         saveNews($news);
-
-    } catch (Exception $ex) {
-        //No era url valido
-    }
 
     }
 
